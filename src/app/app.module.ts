@@ -10,12 +10,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MainLayoutComponent } from './shared/main-layout/main-layout.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CustomersComponent } from './components/customers/customers.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainLayoutComponent,
+    DashboardComponent,
+    CustomersComponent,
     NotFoundComponent
   ],
   imports: [
