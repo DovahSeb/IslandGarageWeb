@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>New Customer</h2>
+<form #userForm="ngForm" (ngSubmit)="saveCustomer(userForm)">
+    <mat-dialog-content>
+        <mat-form-field style="width: 100%;">
+            <mat-label for="firstName">First Name</mat-label>
+            <input matInput id="firstName" name="firstName" [(ngModel)]="customerForm.firstName" required>
+        </mat-form-field>
+        <mat-form-field style="width: 100%;">
+            <mat-label for="lastName">Last Name</mat-label>
+            <input matInput id="lastName" name="lastName" [(ngModel)]="customerForm.lastName" required>
+        </mat-form-field>
+        <mat-form-field style="width: 100%;">
+            <mat-label for="address">Address</mat-label>
+            <input matInput id="address" name="address" [(ngModel)]="customerForm.address">
+        </mat-form-field>
+        <mat-form-field style="width: 100%;">
+            <mat-label for="phoneNumber">Phone Number</mat-label>
+            <input matInput id="phoneNumber" name="phoneNumber" [(ngModel)]="customerForm.phoneNumber">
+        </mat-form-field>
+        <mat-form-field style="width: 100%;">
+            <mat-label for="email">Email</mat-label>
+            <input matInput id="email" name="email" [(ngModel)]="customerForm.email">
+        </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button (click)="closeDialog()" mat-button>Close</button>
+      <button type="submit" mat-button cdkFocusInitial>Save</button>
+    </mat-dialog-actions>
+</form>
