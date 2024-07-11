@@ -41,7 +41,7 @@ export class CustomerService {
   addCustomer(newCustomer: CreateCustomerRequest): Observable<CustomerResponse[]> {
     return this.http.post<CustomerResponse[]>(this.apiUrl + '/Customer/AddCustomer/', JSON.stringify(newCustomer), this.httpOptions).pipe(
       catchError(error => {
-        console.error('Error adding post:', error);
+        console.error('Error adding customer:', error);
         return throwError(()=> new Error('Failed to add customer'));
       })
     );
@@ -50,8 +50,17 @@ export class CustomerService {
   updateCustomer(updateCustomer: UpdateCustomerRequest): Observable<CustomerResponse> {
     return this.http.put<CustomerResponse>(this.apiUrl + '/Customer/UpdateCustomer/', JSON.stringify(updateCustomer), this.httpOptions).pipe(
       catchError(error => {
-        console.error('Error adding post:', error);
+        console.error('Error updating customer:', error);
         return throwError(()=> new Error('Failed to update customer.'));
+      })
+    )
+  }
+
+  deleteCustomer(id: number): Observable<CustomerResponse> {
+    return this.http.delete<CustomerResponse>(this.apiUrl + '/Customer/DeleteCustomer/' + id).pipe(
+      catchError(error => {
+        console.error('Error deleting customer', error);
+        return throwError(()=> new Error('Failed to delete customer.'));
       })
     )
   }

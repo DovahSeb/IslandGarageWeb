@@ -1,3 +1,5 @@
+<p-toast position="top-center" [breakpoints]="{ '920px': { width: '100%', right: '0', left: '0' } }"/>
+<p-confirmDialog />
 <p-toolbar styleClass="mb-4 gap-2">
     <ng-template pTemplate="left">
         <button (click)="addNewCustomer()" color="primary" mat-fab extended>
@@ -9,6 +11,7 @@
 <p-table
     #dt
     [value]="customerData"
+    [loading]="loading"
     [rows]="10"
     [paginator]="true"
     [globalFilterFields]="['customerNumber', 'firstName', 'lastName', 'address', 'phoneNumber', 'email']"
@@ -54,7 +57,7 @@
             <p-button [rounded]="true" [text]="true" size="small" [routerLink]="['../customer', customer.id]">
                 <mat-icon color="primary">edit</mat-icon>
             </p-button>
-            <p-button [rounded]="true" [text]="true" size="small" severity="danger">
+            <p-button [rounded]="true" [text]="true" size="small" severity="danger" (onClick)="deleteCustomer($event, customer.id)">
                 <mat-icon color="warn">delete</mat-icon>
             </p-button>
         </td>
