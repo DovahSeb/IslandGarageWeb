@@ -7,10 +7,11 @@ export interface CreateCustomerRequest {
 }
 
 export interface UpdateCustomerRequest extends CreateCustomerRequest {
-
+    id: number,
 }
 
 export interface CustomerResponse {
+    id: number,
     customerNumber: string,
     firstName: string,
     lastName: string,

@@ -21,11 +21,15 @@ import { ButtonModule } from 'primeng/button';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
+import { ToastModule } from 'primeng/toast';
 import { StyleClassModule } from 'primeng/styleclass';
+import { MessageService } from 'primeng/api';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
+//Components Imports
 import { MainLayoutComponent } from './shared/main-layout/main-layout.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CustomersListComponent } from './components/customers/customers-list/customers-list.component';
@@ -65,11 +69,13 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     IconFieldModule,
     InputIconModule,
     InputTextModule,
+    ToastModule,
     StyleClassModule
   ],
   providers: [
     provideAnimationsAsync(),
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()),
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

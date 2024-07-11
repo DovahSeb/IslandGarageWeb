@@ -1,1 +1,42 @@
-<p>customer-edit works!</p>
+<div class="grid nested-grid">
+    <p-toast key="successKey" position="top-center" [breakpoints]="{ '920px': { width: '100%', right: '0', left: '0' } }" />
+    <p-toast key="errorKey" [breakpoints]="{ '920px': { width: '100%', right: '0', left: '0' } }" />
+    <div class="col-12 md:col-2">
+        <h2 style="font-weight: 800;">Customer Information</h2>
+        <h4 style="font-weight: 800; color: grey;">{{customerNumber}}</h4>
+    </div>
+    <div class="col-10">
+        <form #userForm="ngForm" (ngSubmit)="updateCustomer(userForm)">
+            <div class="formgrid grid">
+                <div class="field col-12 md:col-6">
+                    <label for="firstName">Firstname</label>
+                    <input id="firstName" name="firstName" type="text" [(ngModel)]="customerForm.firstName" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                </div>
+                <div class="field col-12 md:col-6">
+                    <label for="lastName">Lastname</label>
+                    <input id="lastName" name="lastName" type="text" [(ngModel)]="customerForm.lastName" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                </div>
+                <div class="field col-12 md:col-4">
+                    <label for="address">Address</label>
+                    <input id="address" name="address" type="text" [(ngModel)]="customerForm.address" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                </div>
+                <div class="field col-12 md:col-4">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input id="phoneNumber" name="phoneNumber" type="text" [(ngModel)]="customerForm.phoneNumber" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                </div>
+                <div class="field col-12 md:col-4">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="text" [(ngModel)]="customerForm.email" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                </div>
+            </div>
+            <div class="flex flex-row-reverse">
+                <button color="accent" (click)="cancel()" mat-fab extended>
+                    Cancel
+                </button>
+                <button type="submit" color="primary" class="mr-2" mat-fab extended>
+                    Update
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

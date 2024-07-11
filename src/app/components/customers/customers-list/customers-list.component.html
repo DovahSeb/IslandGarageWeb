@@ -19,7 +19,7 @@
 >
     <ng-template pTemplate="caption">
         <div class="flex align-items-center justify-content-between">
-            <h1 class="m-0">List of Customers</h1>
+            <h1 class="m-0" style="font-weight: bold;">List of Customers</h1>
             <p-iconField iconPosition="left" class="ml-auto">
                 <p-inputIcon>
                     <i class="pi pi-search"></i>
@@ -51,7 +51,7 @@
         <td>{{ customer.phoneNumber }}</td>
         <td>{{ customer.email }}</td>
         <td>
-            <p-button [rounded]="true" [text]="true" size="small">
+            <p-button [rounded]="true" [text]="true" size="small" [routerLink]="['../customer', customer.id]">
                 <mat-icon color="primary">edit</mat-icon>
             </p-button>
             <p-button [rounded]="true" [text]="true" size="small" severity="danger">

@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { CreateCustomerRequest, CustomerResponse } from '../interfaces/customer';
+import { CreateCustomerRequest, CustomerResponse, UpdateCustomerRequest } from '../interfaces/customer';
 
 @Injectable({
   providedIn: 'root'
@@ -38,13 +38,22 @@ export class CustomerService {
     )
   }
 
-  addCustomer(newCustomer: CreateCustomerRequest): Observable<any> {
+  addCustomer(newCustomer: CreateCustomerRequest): Observable<CustomerResponse[]> {
     return this.http.post<CustomerResponse[]>(this.apiUrl + '/Customer/AddCustomer/', JSON.stringify(newCustomer), this.httpOptions).pipe(
       catchError(error => {
         console.error('Error adding post:', error);
-        return throwError(()=> new Error('Failed to add post.'));
+        return throwError(()=> new Error('Failed to add customer'));
       })
     );
+  }
+
+  updateCustomer(updateCustomer: UpdateCustomerRequest): Observable<CustomerResponse> {
+    return this.http.put<CustomerResponse>(this.apiUrl + '/Customer/UpdateCustomer/', JSON.stringify(updateCustomer), this.httpOptions).pipe(
+      catchError(error => {
+        console.error('Error adding post:', error);
+        return throwError(()=> new Error('Failed to update customer.'));
+      })
+    )
   }
 
 }
