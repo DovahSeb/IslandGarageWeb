@@ -29,8 +29,17 @@ export class CustomerService {
     );
   }
 
+  getCustomerById(id: number): Observable<CustomerResponse>{
+    return this.http.get<CustomerResponse>(this.apiUrl + '/Customer/GetCustomerById/' + id).pipe(
+      catchError(error => {
+        console.error('Error fetching JSON data:', error);
+        return throwError(()=> new Error('Something went wrong; please try again later.'));
+      })
+    )
+  }
+
   addCustomer(newCustomer: CreateCustomerRequest): Observable<any> {
-    return this.http.post<any>(this.apiUrl + '/Customer/AddCustomer/', JSON.stringify(newCustomer), this.httpOptions).pipe(
+    return this.http.post<CustomerResponse[]>(this.apiUrl + '/Customer/AddCustomer/', JSON.stringify(newCustomer), this.httpOptions).pipe(
       catchError(error => {
         console.error('Error adding post:', error);
         return throwError(()=> new Error('Failed to add post.'));

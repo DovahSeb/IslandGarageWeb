@@ -14,19 +14,6 @@ mat-sidenav {
     text-align: center;
 }
 
-.content {
-    height: auto;
-    margin: 16px;
-    margin-left: 32px;
-    padding: 16px;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 2rem;
-    color: lightgrey;
-    border-radius: 10px;
-}
-
 mat-sidenav-container {
     height: calc(100vh - 65px);
 }

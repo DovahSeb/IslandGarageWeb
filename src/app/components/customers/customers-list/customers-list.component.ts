@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Table } from 'primeng/table';
 import { CustomerService } from '../../../services/customer.service';
 import { CustomerResponse } from '../../../interfaces/customer';
 import { CustomerAddComponent } from '../customer-add/customer-add.component';
@@ -11,8 +12,8 @@ import { CustomerAddComponent } from '../customer-add/customer-add.component';
 })
 export class CustomersListComponent {
 
-  displayedColumns: string[] = ['customerNumber', 'name', 'address', 'phoneNumber', 'email', 'action'];
   customerData = new Array<CustomerResponse>();
+  loading: boolean = true;
 
   constructor(private customerService: CustomerService, private dialog: MatDialog) { }
 
@@ -24,11 +25,18 @@ export class CustomersListComponent {
     this.customerService.getAllCustomers().subscribe({
       next: result => {
         this.customerData = result;
+        this.loading = false;
       },
       error: error => {
         console.error('Error fetching JSON data:', error)
       }
     });
+  }
+
+  getCustomerById(id: number): void {
+    this.customerService.getCustomerById(id).subscribe(result => {
+      console.log(result);
+    })
   }
 
   addNewCustomer(){
@@ -39,8 +47,14 @@ export class CustomersListComponent {
 
     dialogRef.afterClosed().subscribe({
       next: (result: CustomerResponse[]) => {
-        this.customerData = result;
+        if(result.length > 0){
+          this.customerData = result;
+        }
       }
     })
+  }
+
+  onGlobalFilter(table: Table, event: Event) {
+    table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
   }
 }
