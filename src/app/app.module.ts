@@ -8,7 +8,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -18,6 +17,7 @@ import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
@@ -37,6 +37,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CustomersListComponent } from './components/customers/customers-list/customers-list.component';
 import { CustomerAddComponent } from './components/customers/customer-add/customer-add.component';
 import { CustomerEditComponent } from './components/customers/customer-edit/customer-edit.component';
+import { CustomerVehiclesListComponent } from './components/customer-vehicles/customer-vehicles-list/customer-vehicles-list.component';
+import { CustomerVehiclesAddComponent } from './components/customer-vehicles/customer-vehicles-add/customer-vehicles-add.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 import { provideHttpClient, withFetch } from '@angular/common/http';
@@ -49,6 +51,8 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     CustomersListComponent,
     CustomerAddComponent,
     CustomerEditComponent,
+    CustomerVehiclesListComponent,
+    CustomerVehiclesAddComponent,
     NotFoundComponent
   ],
   imports: [
@@ -60,7 +64,6 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
-    MatTableModule,
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
@@ -68,6 +71,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     TableModule,
     ToolbarModule,
     ConfirmDialogModule,
+    CarouselModule,
     ButtonModule,
     IconFieldModule,
     InputIconModule,

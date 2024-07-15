@@ -1,0 +1,41 @@
+<div class="grid nested-grid mt-4">
+    <div class="col-12 md:col-4">
+        <h2 *ngIf="customerVehiclesData.length === 1" style="font-weight: 800;">Customer Vehicle</h2>
+        <h2 *ngIf="customerVehiclesData.length > 1" style="font-weight: 800;">Customer Vehicles</h2>
+        <button color="primary" mat-fab extended>
+            <mat-icon color="white">add</mat-icon>Add Vehicle
+        </button>
+    </div>
+    <div class="col-8 md:col-4">
+        <p-carousel [value]="customerVehiclesData" [numVisible]="3" [numScroll]="1" [responsiveOptions]="responsiveOptions">
+            <ng-template let-vehicle pTemplate="item">
+                <div class="border-1 surface-border border-round m-2 p-3">
+                    <div class="mb-3">
+                        <div class="relative mx-auto">
+                            <img 
+                            [src]="vehicle.vehicleImage" 
+                            [alt]="vehicle.make + ' ' + vehicle.model + ' ' + vehicle.year"  
+                            class="w-full border-round" />
+                        </div>
+                    </div>
+                    <div class="mb-3 font-medium">
+                        {{ vehicle.make }} {{ vehicle.model }}
+                    </div>
+                    <div class="flex justify-content-between align-items-center">
+                        <div class="mt-0 font-semibold text-xl">
+                            {{ vehicle.year }}
+                        </div>
+                        <span>
+                            <p-button [rounded]="true" [text]="true" size="small">
+                                <mat-icon color="primary">edit</mat-icon>
+                            </p-button>
+                            <p-button [rounded]="true" [text]="true" size="small" severity="danger">
+                                <mat-icon color="warn">delete</mat-icon>
+                            </p-button>
+                        </span>
+                    </div>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+</div>
