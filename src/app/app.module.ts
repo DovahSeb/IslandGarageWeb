@@ -16,8 +16,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
 import { ToolbarModule } from 'primeng/toolbar';
+import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { CarouselModule } from 'primeng/carousel';
+import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
@@ -26,6 +29,7 @@ import { ToastModule } from 'primeng/toast';
 import { StyleClassModule } from 'primeng/styleclass';
 import { MessageService } from 'primeng/api';
 import { ConfirmationService } from 'primeng/api';
+import { DialogService } from 'primeng/dynamicdialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -70,8 +74,11 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     CardModule,
     TableModule,
     ToolbarModule,
+    DialogModule,
     ConfirmDialogModule,
+    DynamicDialogModule,
     CarouselModule,
+    DropdownModule,
     ButtonModule,
     IconFieldModule,
     InputIconModule,
@@ -83,7 +90,8 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     provideAnimationsAsync(),
     provideHttpClient(withFetch()),
     MessageService,
-    ConfirmationService
+    ConfirmationService,
+    DialogService
   ],
   bootstrap: [AppComponent]
 })
