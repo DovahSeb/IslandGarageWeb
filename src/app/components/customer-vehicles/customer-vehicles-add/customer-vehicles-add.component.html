@@ -1,1 +1,56 @@
-<p>customer-vehicles-add works!</p>
+<form #customerVehicleForm="ngForm" (ngSubmit)="customerVehicleForm.valid && addCustomerVehicle(customerVehicleForm)">
+    <div class="formgrid grid mt-2">
+        <div class="field col-12 md:col-6">
+            <label for="make">Make</label>
+            <input #make="ngModel" required id="make" name="make" type="text" [(ngModel)]="newCustomerVehicleForm.make" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            <div *ngIf="customerVehicleForm.submitted && make.errors">
+                <div *ngIf="make.errors?.['required']" style="color: red;">*Vehicle Make is required.</div>
+            </div>
+        </div>
+        <div class="field col-12 md:col-6">
+            <label for="model">Model</label>
+            <input #model="ngModel" required id="model" name="model" type="text" [(ngModel)]="newCustomerVehicleForm.model" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            <div *ngIf="customerVehicleForm.submitted && model.errors">
+                <div *ngIf="model.errors?.['required']" style="color: red;">*Vehicle Model is required.</div>
+            </div>
+        </div>
+        <div class="field col-12 md:col-6">
+            <label for="year">Year</label>
+            <input #year="ngModel" required id="year" name="year" type="text" [(ngModel)]="newCustomerVehicleForm.year" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            <div *ngIf="customerVehicleForm.submitted && year.errors">
+                <div *ngIf="year.errors?.['required']" style="color: red;">*Vehicle Year is required.</div>
+            </div>
+        </div>
+        <div class="field col-12 md:col-6">
+            <label for="chassisNo">Chassis Number</label>
+            <input #chassisNo="ngModel" required id="chassisNo" name="chassisNo" type="text" [(ngModel)]="newCustomerVehicleForm.chassisNo" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            <div *ngIf="customerVehicleForm.submitted && chassisNo.errors">
+                <div *ngIf="chassisNo.errors?.['required']" style="color: red;">*Chassis Number is required.</div>
+            </div>
+        </div>
+        <div class="field col-12 md:col-6">
+            <h4 style="margin-bottom: 0.5rem;">Vehicle</h4>
+            <p-dropdown
+                appendTo="body"
+                id="vehicleImageId"
+                name="vehicleImageId"
+                [options]="vehiclesData" 
+                [(ngModel)]="newCustomerVehicleForm.vehicleImageId" 
+                optionValue="id"
+                optionLabel="description"
+                [filter]="true"
+                filterBy="description"
+                [loading]="loading"
+                placeholder="Select a Vehicle"
+                styleClass="w-full"/>
+        </div>
+    </div>
+    <div class="flex justify-content-end gap-2">
+        <button type="submit" color="primary" mat-fab extended>
+            Save
+        </button>
+        <button type="button" color="accent" mat-fab extended (click)="cancel()">
+            Cancel
+        </button>
+    </div>
+</form>

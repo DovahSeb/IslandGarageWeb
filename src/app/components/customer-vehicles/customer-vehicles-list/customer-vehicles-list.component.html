@@ -1,12 +1,13 @@
 <div class="grid nested-grid mt-4">
+    <p-toast key="successKey" position="top-center" [breakpoints]="{ '920px': { width: '100%', right: '0', left: '0' } }" />
     <div class="col-12 md:col-4">
-        <h2 *ngIf="customerVehiclesData.length === 1" style="font-weight: 800;">Customer Vehicle</h2>
+        <h2 *ngIf="customerVehiclesData.length === 1 || customerVehiclesData.length === 0" style="font-weight: 800;">Customer Vehicle</h2>
         <h2 *ngIf="customerVehiclesData.length > 1" style="font-weight: 800;">Customer Vehicles</h2>
-        <button color="primary" mat-fab extended>
+        <button color="primary" mat-fab extended (click)="addNewCustomerVehicle()">
             <mat-icon color="white">add</mat-icon>Add Vehicle
         </button>
     </div>
-    <div class="col-8 md:col-4">
+    <div *ngIf="customerVehiclesData.length !== 0" class="col-8 md:col-4">
         <p-carousel [value]="customerVehiclesData" [numVisible]="3" [numScroll]="1" [responsiveOptions]="responsiveOptions">
             <ng-template let-vehicle pTemplate="item">
                 <div class="border-1 surface-border border-round m-2 p-3">
